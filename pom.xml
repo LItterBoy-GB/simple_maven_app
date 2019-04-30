@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>simple-maven-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>app</name>
+    <name>simple-maven-app</name>
 
     <properties>
         <java.version>1.8</java.version>
