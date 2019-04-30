@@ -8,11 +8,10 @@
         <version>2.1.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.javalitterboy</groupId>
-    <artifactId>ibk</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>simple-maven-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ibk</name>
-    <description>模仿爱记账项目</description>
+    <name>app</name>
 
     <properties>
         <java.version>1.8</java.version>
