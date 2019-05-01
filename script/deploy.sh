@@ -31,8 +31,11 @@ cp target/${NAME}-${VERSION}.jar /usr/local/${NAME}.jar
 chmod +x /usr/local/${NAME}.jar
 
 if [[ -f "/usr/local/$NAME.jar" ]];then
-    echo "stop SpringBoot IbkApplication"
-    pid=`ps -ef | grep ${NAME}.jar | grep -v grep | awk '{print $2}'`
+    echo "stop Application"
+    echo `ps -ef | grep ${NAME}`
+    echo `ps -ef | grep ${NAME} | grep -v grep`
+    echo `ps -ef | grep ${NAME} | grep -v grep | awk '{print $2}'`
+    pid=`ps -ef | grep ${NAME} | grep -v grep | awk '{print $2}'`
     echo "pid：$pid"
     if [[ -n "$pid" ]];then
         kill -9 ${pid}
