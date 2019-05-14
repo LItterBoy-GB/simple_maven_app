@@ -40,7 +40,7 @@ if [[ -f "/usr/local/$NAME.jar" ]];then
     echo "start Application"
     echo "$(date "+%Y-%m-%d %H:%M:%S") start Application" >> /var/log/${NAME}.log
     nohup java -jar /usr/local/${NAME}.jar >> /var/log/${NAME}.log &
-    echo `ps -aux | grep ${NAME}`
+    echo `ps -ef | grep ${NAME}`
     echo 'deploy finish'
 else
     echo "${NAME}.jar not found"
