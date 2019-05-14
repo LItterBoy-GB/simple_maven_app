@@ -25,16 +25,12 @@ else
     exit 2
 fi
 
-echo 'copy ibk.jar'
-echo `pwd`
+echo 'copy $NAME'
 cp target/${NAME}-${VERSION}.jar /usr/local/${NAME}.jar
 chmod +x /usr/local/${NAME}.jar
 
 if [[ -f "/usr/local/$NAME.jar" ]];then
     echo "stop Application"
-    echo `ps -ef | grep ${NAME}`
-    echo `ps -ef | grep ${NAME} | grep -v grep`
-    echo `ps -ef | grep ${NAME} | grep -v grep | awk '{print $2}'`
     pid=`ps -ef | grep ${NAME} | grep -v grep | awk '{print $2}'`
     echo "pid：$pid"
     if [[ -n "$pid" ]];then
@@ -44,7 +40,7 @@ if [[ -f "/usr/local/$NAME.jar" ]];then
     echo "start Application"
     echo "$(date "+%Y-%m-%d %H:%M:%S") start Application" >> /var/log/${NAME}.log
     nohup java -jar /usr/local/${NAME}.jar >> /var/log/${NAME}.log &
-    sleep 2
+    echo `ps -aux | grep ${NAME}`
     echo 'deploy finish'
 else
     echo "${NAME}.jar not found"
