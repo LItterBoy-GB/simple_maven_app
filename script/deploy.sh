@@ -1,9 +1,8 @@
 #!/bin/bash
 # 添加这句以防子进程被杀掉
-MY_PROCESS=`which java`
-echo "MY_PROCESS:$MY_PROCESS"
-export JENKINS_NODE_COOKIE=${MY_PROCESS}
-export BUILD_ID=${MY_PROCESS}
+export JENKINS_NODE_COOKIE=dontkillme
+export BUILD_ID=dontkillme
+echo `uname -a`
 echo 'install'
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 
