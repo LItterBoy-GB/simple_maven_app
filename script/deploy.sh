@@ -3,10 +3,9 @@
 export JENKINS_NODE_COOKIE=dontkillme
 export BUILD_ID=dontkillme
 echo `uname -a`
-echo 'install'
+
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 
-echo 'get name'
 NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
 if [[ -n "$NAME" ]];then
     echo "name:$NAME"
@@ -15,7 +14,6 @@ else
     exit 1
 fi
 
-echo 'get version'
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 if [[ -n "$VERSION" ]];then
     echo "version:$VERSION"
@@ -24,7 +22,7 @@ else
     exit 2
 fi
 
-echo 'copy $NAME'
+echo "copy $NAME"
 cp target/${NAME}-${VERSION}.jar /usr/local/${NAME}.jar
 chmod +x /usr/local/${NAME}.jar
 
@@ -39,7 +37,7 @@ if [[ -f "/usr/local/$NAME.jar" ]];then
     echo "start Application"
     echo "$(date "+%Y-%m-%d %H:%M:%S") start Application" >> /var/log/${NAME}.log
     nohup java -jar /usr/local/${NAME}.jar >> /var/log/${NAME}.log &
-    echo `ps -ef | grep ${NAME}`
+    ps -ef | grep ${NAME}
     echo 'deploy finish'
 else
     echo "${NAME}.jar not found"
